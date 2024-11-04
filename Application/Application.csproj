@@ -7,18 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Categories\" />
-    <Folder Include="Handlers\CHandlers\Categories\" />
-    <Folder Include="Handlers\QHandlers\Categories\" />
-    <Folder Include="Queries\Categories\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Handlers\CHandlers\" />
+    <Folder Include="Handlers\QHandlers\" />
+    <Folder Include="Queries\" />
+    <Folder Include="Responses\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.10.0" />
     <PackageReference Include="MediatR" Version="12.4.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.2" />
+    <PackageReference Include="Stripe.net" Version="47.0.0" />
   </ItemGroup>
 
   <ItemGroup>

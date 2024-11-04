@@ -1,8 +1,8 @@
 ﻿namespace Domain.Common
 {
-    public class GenericPair
+    public class GenericPair<T, U>
     {
-        public object Key { get; set; }
-        public object Value { get; set; }
+        public T Key { get; set; }
+        public U Value { get; set; }
     }
 }

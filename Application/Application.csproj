@@ -7,10 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\Categories\" />
-    <Folder Include="Handlers\CHandlers\Categories\" />
-    <Folder Include="Handlers\QHandlers\Categories\" />
-    <Folder Include="Queries\Categories\" />
+    <Folder Include="Commands\" />
+    <Folder Include="Handlers\CHandlers\" />
+    <Folder Include="Handlers\QHandlers\" />
+    <Folder Include="Queries\" />
+    <Folder Include="Responses\" />
     <Folder Include="Validators\" />
   </ItemGroup>
 

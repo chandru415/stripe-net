@@ -18,6 +18,8 @@ else
     app.UseExpectionHandlerMiddleware();
 }
 
+app.UseMiddleware<EnableBufferingMiddleware>();
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

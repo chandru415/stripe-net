@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Application.Common.Exceptions;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Stripe;
 using System.Threading.Tasks;
 
 namespace Api.Middlewares
@@ -14,10 +17,37 @@ namespace Api.Middlewares
             _next = next;
         }
 
-        public Task Invoke(HttpContext httpContext)
+        public async Task Invoke(HttpContext httpContext)
         {
 
-            return _next(httpContext);
+            try
+            {
+                await _next(httpContext);
+            }
+            catch (FluentValidation.ValidationException ex)
+            {
+                httpContext.Response.StatusCode = 400;
+                httpContext.Response.ContentType = "application/json";
+                await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex));
+            }
+            catch (StripeException ex)
+            {
+                httpContext.Response.StatusCode = 400;
+                httpContext.Response.ContentType = "application/json";
+                await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex));
+            }
+            catch (ValidationException ex)
+            {
+                httpContext.Response.StatusCode = 400;
+                httpContext.Response.ContentType = "application/json";
+                await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex));
+            }
+            catch (Exception ex)
+            {
+                httpContext.Response.StatusCode = 500;
+                httpContext.Response.ContentType = "application/json";
+                await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(ex));
+            }
         }
     }
 
